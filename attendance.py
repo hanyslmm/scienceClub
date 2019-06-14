@@ -7,7 +7,7 @@ import os
 import xlsxwriter
 import time
 engine = 'openpyxl'
-os.chdir(r"test")
+os.chdir(r"science club 2018-2019")
 mainDir = os.listdir(".")
 fasl = "##########################################"
 # LOOP in main directory
@@ -41,7 +41,7 @@ for subDir in mainDir:
                         # dfSummary = df.count()
                         # print(dfSummary)
                     except:
-                        print(fasl + "\nName column not found!\n" + fasl)
+                        print(fasl + "\nName column not found! in: " + sheetName)
                 df = df.count().rename_axis(subDir).to_frame('counts')
                 listDf.append(df)
                 listKey.append(sheetName)
@@ -50,6 +50,7 @@ for subDir in mainDir:
                 print (sN + "{} is not in xlsx format".format(sheetName))
                 print("###############")
         newdf = pd.concat(listDf, keys = listKey)
+        os.chdir(r"{}".format(".."))
         newdf.to_excel(subDir + "Summary" + ".xlsx", engine=engine)
     except:
         print ("{} is not directory".format(subDir))
