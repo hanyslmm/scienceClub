@@ -7,15 +7,20 @@ import os
 import xlsxwriter
 import time
 engine = 'openpyxl'
-os.chdir(r"science club 2018-2019")
+mainDirName = "Science Club 2019_2020" #input("enter main directory name: ")
+os.chdir(r"{}".format(mainDirName))
+cwDir = os.getcwd()
 mainDir = os.listdir(".")
 fasl = "##########################################"
+command = "find . -mindepth 2 -type f -print -exec mv {} . \;"
 # LOOP in main directory
+print (mainDir)
 for subDir in mainDir:
     print ("loop in main directory of {}".format(subDir) + "\n" + fasl)
     try:
         time.sleep(3)
         os.chdir(r"{}".format(subDir))
+        os.system(command)
         subDirList = os.listdir(".")
         print (subDirList)
 # LOOP in each teacher director
@@ -50,10 +55,13 @@ for subDir in mainDir:
                 print (sN + "{} is not in xlsx format".format(sheetName))
                 print("###############")
         newdf = pd.concat(listDf, keys = listKey)
-        os.chdir(r"{}".format(".."))
-        newdf.to_excel(subDir + "Summary" + ".xlsx", engine=engine)
+        os.chdir(r"{}".format(cwDir))
+        print("change directory to "+os.getcwd())
+        newdf.to_excel(subDir + "_Summary" + ".xlsx", engine=engine)
+
     except:
         print ("{} is not directory".format(subDir))
+        os.chdir(r"{}".format(cwDir))
 
 
 
