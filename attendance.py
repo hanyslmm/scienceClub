@@ -7,18 +7,20 @@ import os
 import xlsxwriter
 import time
 engine = 'openpyxl'
-mainDirName = "Science Club 2019_2020" #input("enter main directory name: ")
+mainDirName = input("enter main directory name: ") #"science club 2019_2020"
 os.chdir(r"{}".format(mainDirName))
 cwDir = os.getcwd()
 mainDir = os.listdir(".")
 fasl = "##########################################"
 command = "find . -mindepth 2 -type f -print -exec mv {} . \;"
+# Create a Pandas Excel writer using XlsxWriter as the engine.
+writer = pd.ExcelWriter('attendSummary.xlsx', engine='xlsxwriter')
 # LOOP in main directory
 print (mainDir)
 for subDir in mainDir:
     print ("loop in main directory of {}".format(subDir) + "\n" + fasl)
     try:
-        time.sleep(3)
+        #time.sleep(3)
         os.chdir(r"{}".format(subDir))
         os.system(command)
         subDirList = os.listdir(".")
@@ -47,23 +49,43 @@ for subDir in mainDir:
                         # print(dfSummary)
                     except:
                         print(fasl + "\nName column not found! in: " + sheetName)
-                df = df.count().rename_axis(subDir).to_frame('counts')
+                df = df.count()#.rename_axis(subDir).to_frame('counts')
                 listDf.append(df)
                 listKey.append(sheetName)
+
+                # print(listDf)
+                # print(listKey)
             except:
                 print("###############")
                 print (sN + "{} is not in xlsx format".format(sheetName))
                 print("###############")
         newdf = pd.concat(listDf, keys = listKey)
+        #newdf.rename(columns = {list(newdf)[0]: 'Class'}, inplace = True)
+        newdf = newdf.to_frame()
+
+        print("columns name??????")
+        print(type(newdf))
+        #newdf.columns = ['Col_1', 'Col_2', 'test']
+
+
+        #newdf.rename(columns = {'Unnamed: 0': 'class'}, inplace = True)
         os.chdir(r"{}".format(cwDir))
         print("change directory to "+os.getcwd())
-        newdf.to_excel(subDir + "_Summary" + ".xlsx", engine=engine)
+        newdf.to_excel(subDir + "_Summary" + ".xlsx", engine='xlsxwriter')
+
+
+        # Convert the dataframe to an XlsxWriter Excel object.
+        newdf.to_excel(writer, sheet_name=subDir)
+
+
 
     except:
         print ("{} is not directory".format(subDir))
         os.chdir(r"{}".format(cwDir))
 
 
+# Close the Pandas Excel writer and output the Excel file.
+writer.save()
 
 # engine = 'openpyxl'
 # dfSummary.to_excel(sheetName + ".xlsx", engine=engine)
