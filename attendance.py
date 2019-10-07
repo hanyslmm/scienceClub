@@ -61,7 +61,7 @@ for subDir in mainDir:
                 print("###############")
         newdf = pd.concat(listDf, keys = listKey)
         #newdf.rename(columns = {list(newdf)[0]: 'Class'}, inplace = True)
-        newdf = newdf.to_frame()
+        newdf = newdf.to_frame().T
 
         print("columns name??????")
         print(type(newdf))
