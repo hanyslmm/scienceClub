@@ -6,8 +6,10 @@ import re
 import re
 import os
 import xlsxwriter
-import time
+# use of json package
+import json
 
+stats= {}
 excelFile = "Science Club 2019_2020/attendSummary.xlsx"
 
 # read excel file to create DataFrame sheet
@@ -18,17 +20,47 @@ i = 0
 for sheet in sheetNames:
     # READ specific excell sheet_name dfs
     dfs = pd.read_excel(excelFile, sheet_name=sheet)
+    width = dfs.shape[1]
+    print("row width = " + str(width))
+    stats[sheet] = {}
     # READ list for columns in each sheet
     # header = list(dfs)
-    print(dfs.shape)
     columns = dfs.columns.tolist()
+    colList = []
     for col in columns:
         if not ("unnamed" in col.lower()):
-            print(dfs.get_value(0, col)) #
+            colList.append(col)
+
+
+    for col in colList:
+        stats[sheet][col] = {}
+        j = 0
+        colIndex = dfs.columns.get_loc(col) # get index of col with name
+        # obj = dfs.loc[0].at[colIndex] # get the value of Name column
+        obj = dfs.iat[0, colIndex]
+        stats[sheet][col][obj] = dfs.iat[2, colIndex] # get count of Name column
+        colIndex += 1
+        while True:
+            obj = dfs.iat[0, colIndex]
+            stats[sheet][col][obj] = dfs.iat[2, colIndex]
+            j +=1
+            colIndex += 1
+            if colIndex >= width:
+                break
+            if ((j >= 5) or ("name" in (dfs.iat[0, colIndex].lower()))):
+                break
+
+
+print(stats['M.Basem Rashed']['B2_Sat_8-Al'].keys())
+#print(i)
 
 
 
-    """primaryIp = dfs.columns.get_loc("RNC")
+"""
+
+
+
+primaryIp = dfs.columns.get_loc("RNC")
 
     primaryIp = int(primaryIp)
     secondaryIp = primaryIp + 2
