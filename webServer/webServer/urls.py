@@ -15,10 +15,12 @@ Including another URLconf
 """
 # from django.contrib import admin, science
 from webServer import science
+from statScience.views import home_view
 from django.urls import path
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('science/', science.site.urls),
-    path('', views.home, name='home'),
+    path('', home_view, name='home')
+
 ]

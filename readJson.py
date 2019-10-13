@@ -48,6 +48,8 @@ summaryJson["Sep_%%"] = round((sepPayment/regStudent)*100)
 summaryJson["Oct_Count"] = octPayment
 summaryJson["Oct_%%"] = round((octPayment/regStudent)*100)
 
+with open('summaryData.json', 'w') as outfile:
+    json.dump(summaryJson, outfile)
 
 print(summaryJson)
 #for
