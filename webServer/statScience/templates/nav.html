@@ -1,0 +1,71 @@
+{% load static %}
+
+
+<nav class="container navbar navbar-default">
+
+  <div class="row jumbotron text-center" >
+    <div class="col-sm-4">
+      <img src="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/25994917_1553555554698670_6633720861029793644_n.jpg?_nc_cat=110&_nc_oc=AQnr7aSN7cQltC1oXx5cuGMGj_uJgjQYe-vCdsJSL013pkh14CqMEVbyR9kKWqeyYEo&_nc_ht=scontent.fcai3-1.fna&oh=4dcae3420767b1d0429cbd7a9353a16b&oe=5E316BDE" alt="My image"
+      class="title-logo img-fluid img-responsive" height="250" width="250">
+      <!--img src="/Users/hanyslmm/projects/scienceClub/webServer/static/arabity.png" class="title-logo img-fluid
+                                      img-responsive" height="150" width="150"/-->
+    </div>
+    <div class="col-sm-8">
+      <h1>Science Club</h1>
+      <h3>For Educational Services</h3>
+      <p> UNLOCK YOUR VISION</p>
+
+    </div>
+  </div>
+
+
+<!-- second script for search with brand -->
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function BrandFunction() {
+  document.getElementById("BrandDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("BrandDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+<!-- second script for search with brand -->
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function ServiceFunction() {
+  document.getElementById("ServiceDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("ServiceDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
+</nav>

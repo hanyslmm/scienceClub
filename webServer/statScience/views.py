@@ -3,7 +3,8 @@ from django.shortcuts import render
 # use of json package
 import json
 
-with open('../summaryData.json') as json_file:
+summDict = {}
+with open('../summaryData.json', 'r') as json_file:
     summData = json.load(json_file)
 
 # Create your views here.
