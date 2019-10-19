@@ -18,8 +18,13 @@
 
       {% for key, value in summData.items %}
       <tr>
+       {% if "Rate" in key %}
         <td>{{key}}</td>
         <td>{{value}}%</td>
+        {% else %}
+        <td>{{key}}</td>
+        <td>{{value}}</td>
+        {% endif %}
       </tr>
       {% endfor %}
     </table>
