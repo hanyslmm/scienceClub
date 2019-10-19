@@ -42,11 +42,11 @@ for teach in teachList:
 summaryJson["Class_Count"] = len(classList)
 summaryJson["Student_Count"] = regStudent
 summaryJson["Aug_Count"] = augPayment
-summaryJson["Aug_%%"] = round((augPayment/regStudent)*100)
+summaryJson["Aug_Rate"] = round((augPayment/regStudent)*100)
 summaryJson["Sep_Count"] = sepPayment
-summaryJson["Sep_%%"] = round((sepPayment/regStudent)*100)
+summaryJson["Sep_Rate"] = round((sepPayment/regStudent)*100)
 summaryJson["Oct_Count"] = octPayment
-summaryJson["Oct_%%"] = round((octPayment/regStudent)*100)
+summaryJson["Oct_Rate"] = round((octPayment/regStudent)*100)
 
 with open('summaryData.json', 'w') as outfile:
     json.dump(summaryJson, outfile)
