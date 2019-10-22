@@ -18,7 +18,24 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-4 btn-group text-center" role="group">
+      <button type="button" class="btn btn-secondary pull-left">
+        <a href="{% url 'violation' %}">violation</a>
+      </button>
 
+    </div>
+    <div class="col-md-4 btn-group text-center" role="group">
+      <button type="button" class="btn btn-secondary pull-left">
+        <a href="{% url 'home' %}">Summary Page</a>
+      </button>
+    </div>
+    <div class="col-md-4 btn-group text-center" role="group">
+      <button type="button" class="btn btn-secondary pull-right">
+        <a href="{% url 'teacher' %}">Teachers Page</a>
+      </button>
+    </div>
+  </div>
 <!-- second script for search with brand -->
 <script>
 /* When the user clicks on the button,

@@ -15,9 +15,9 @@ def home_view(request, *args, **kwargs):
 
 def teacher_view(request, *args, **kwargs):
     print(request.user)
-    return render(request, "teacher.html")
+    return render(request, "teacher.html", {'summData': summData})
 
-def summary(request, *args, **kwargs):
+def violation(request, *args, **kwargs):
     print(request.user)
-    return HttpResponse("<h1>Summary Page</h1>")
+    return render(request, "violation.html", {'summData': summData})
     #return render(request, "summary.html")

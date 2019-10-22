@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Main</title>
+  {% include 'header.html' %}
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+
+    {% include 'nav.html' %}
+
+    <div class="row jumbotron text-center" >
+    <table style="width:50%; margin-left:25%; margin-right:15%" id="t01">
+      <tr>
+        <th>Month</th>
+        <th>Result</th>
+      </tr>
+
+      {% for key, value in summData.items %}
+      <tr>
+       {% if "Rate" in key %}
+        <td>{{key}}</td>
+        <td>{{value}}%</td>
+        {% else %}
+        <td>{{key}}</td>
+        <td>{{value}}</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  </br>
+  {% include 'footer.html' %}
+  </br>
+
+
+</body>
+</html>
