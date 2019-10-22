@@ -3,21 +3,31 @@ from django.shortcuts import render
 # use of json package
 import json
 
-summDict = {}
-with open('../summaryData.json', 'r') as json_file:
-    summData = json.load(json_file)
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-    #return HttpResponse("hello")#'list':tasks_new_v_new
+
     print(request.user)
+    summDict = {}
+    with open('../summaryData.json', 'r') as json_file:
+        summData = json.load(json_file)
     return render(request, "home.html", {'summData': summData})
 
+
 def teacher_view(request, *args, **kwargs):
+
     print(request.user)
-    return render(request, "teacher.html", {'summData': summData})
+    teacherData = {}
+    with open('../teacherData.json', 'r') as json_file:
+        teacherData = json.load(json_file)
+    return render(request, "teacher.html", {'teacherData': teacherData})
+
 
 def violation(request, *args, **kwargs):
+
     print(request.user)
-    return render(request, "violation.html", {'summData': summData})
+    lostData = {}
+    with open('../lostData.json', 'r') as json_file:
+        lostData = json.load(json_file)
+    return render(request, "violation.html", {'lostData': lostData})
     #return render(request, "summary.html")
