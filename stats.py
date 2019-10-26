@@ -67,7 +67,7 @@ for sheet in sheetNames:
 
 
 print(stats['M.Basem Rashed']['B2_Sat_8-Al'])
-#print(i)
+# print(i)
 
 with open('data.json', 'w') as outfile:
     json.dump(stats, outfile)

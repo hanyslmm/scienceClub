@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Main</title>
+{% extends "base.html" %}
+{% block content_title %}
+  <title> teacher view </title>
+{% endblock content_title %}
+
+{% block content %}
+
   {% include 'header.html' %}
-</head>
-<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
-
-<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body>
-
-    {% include 'nav.html' %}
-
-
+  {% include 'nav.html' %}
 
     <div class="row jumbotron text-center" >
       <p><b>Click the button to sort the table numerically:</b></p>
@@ -49,9 +42,7 @@
   {% include 'footer.html' %}
   </br>
 
-
-</body>
-</html>
+{% endblock 
 
 
 <script>

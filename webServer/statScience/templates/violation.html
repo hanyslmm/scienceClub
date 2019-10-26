@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Main</title>
-  {% include 'header.html' %}
-</head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body>
+{% extends "base.html" %}
 
-    {% include 'nav.html' %}
+{% block content_title %}
+<title> teacher view </title>
+{% endblock content_title %}
 
+{% block content %}
     <div class="row jumbotron text-center" >
     <table style="width:70%; margin-left:5%; margin-right:5%" id="t01">
-<thead>
-      <tr>
-        <th>Teacher Name</th>
-        <th>Class Count</th>
-        <th>Class details</th>
-      </tr>
-</thead>
+    <thead>
+          <tr>
+            <th>Teacher Name</th>
+            <th>Class Count</th>
+            <th>Class details</th>
+          </tr>
+    </thead>
       <tbody>
         </tr>
 
@@ -42,10 +38,4 @@
       <tbody>
     </table>
   </div>
-  </br>
-  {% include 'footer.html' %}
-  </br>
-
-
-</body>
-</html>
+{% endblock content %}
