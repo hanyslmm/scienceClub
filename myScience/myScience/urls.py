@@ -25,7 +25,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('science/', science.site.urls),
     path('', admin.site.urls), #, include('home_view.urls')),
-    path('admin/', admin.site.urls),
+#    path('admin/', admin.site.urls),
     path('home', home_view, name='home'),
     path('teacher', teacher_view, name='teacher'),
     path('violation', violation, name='violation'),
