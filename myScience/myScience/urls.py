@@ -1,4 +1,4 @@
-"""webServer URL Configuration
+"""myScience URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -25,9 +25,10 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('science/', science.site.urls),
     path('', admin.site.urls), #, include('home_view.urls')),
-    path('admin', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('home', home_view, name='home'),
     path('teacher', teacher_view, name='teacher'),
     path('violation', violation, name='violation'),
+    path('polls/', include('polls.urls')),
 
-] # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
